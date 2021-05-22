@@ -1,0 +1,11 @@
+# PyCharm Files
+.idea/
+
+# VSCode Files
+.vscode
+
+# Virtual env
+.venv
+/venv
+
+__pycache__/
