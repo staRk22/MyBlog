@@ -1,0 +1,3 @@
+flask
+email_validator
+flask-wtf # wt forms for password management
