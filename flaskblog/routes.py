@@ -1,8 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
-app = Flask(__name__)  # __name__=='__main__'
-
-app.config['SECRET_KEY'] = '262892ca4d1fa437ac16827c4389361f'  # Used secrets.token_hex(16) in cmd to generate this.
+from flask import render_template, url_for, flash, redirect
+from flaskblog.models import User, Post
+from flaskblog.forms import RegistrationForm, LoginForm
+from flaskblog import app
 
 posts = [
     {
@@ -51,6 +50,3 @@ def login():
             flash(f"logged in failed. Please check username and password", 'danger')
     return render_template('login.html', title='Login', form=form)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
