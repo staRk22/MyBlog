@@ -1,8 +1,22 @@
 from datetime import datetime
-from flaskblog import db
+from flaskblog import db, login_manager
+from flask_login import UserMixin
 
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    """
+    The extension will expect user-model to have 4 attributes & methods. flask_login provides "UserMixin"
+    to do all that.
+    1) isAuthenticated: returns true on valid credentials
+    2) isActive:
+    3) isAnonymous
+    4) getId
+    """
+    return User.query.get(int(user_id))
+
+
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
