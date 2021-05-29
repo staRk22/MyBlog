@@ -4,3 +4,4 @@ flask-wtf # wt forms for password management
 flask_sqlalchemy
 flask-bcrypt
 flask-login
+pillow
